@@ -51,8 +51,7 @@ func UpdateProduct(body string, User string, id int) (int, string) {
 	}
 
 	if len(t.ProdTitle) == 0 {
-		fmt.Println(t.ProdTitle)
-		return 400, "Debe especificar el nombre del producto DALE "
+		return 400, "Debe especificar el nombre del producto "
 	}
 
 	isAdmin, msg := bd.UserIsAdmin(User)
