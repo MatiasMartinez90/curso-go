@@ -70,7 +70,7 @@ func UpdateProduct(body string, User string, id int) (int, string) {
 
 }
 
-func DeleteProduct(body string, User string, id int) (int, string) {
+func DeleteProduct(User string, id int) (int, string) {
 	fmt.Println("Inicializando funcion  router.DeleteProduct")
 
 	if id == 0 {
