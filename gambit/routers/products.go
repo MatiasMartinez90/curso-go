@@ -46,9 +46,6 @@ func UpdateProduct(body string, User string, id int) (int, string) {
 	var t models.Product
 
 	err := json.Unmarshal([]byte(body), &t)
-	fmt.Println("IMPRIMO ERRORCITO")
-	fmt.Println(len(t.ProdTitle))
-	fmt.Println(t.ProdTitle)
 
 	if err != nil {
 		return 400, "Error en los datos recibidos" + err.Error()
@@ -71,4 +68,24 @@ func UpdateProduct(body string, User string, id int) (int, string) {
 
 	return 200, " Update OK"
 
+}
+
+func DeleteProduct(body string, User string, id int) (int, string) {
+	fmt.Println("Inicializando funcion  router.DeleteProduct")
+
+	if id == 0 {
+		return 400, "Debe especificar ID del Producto a borrar  "
+	}
+
+	isAdmin, msg := bd.UserIsAdmin(User)
+	if !isAdmin {
+		return 400, msg
+	}
+
+	err := bd.DeleteProduct(id)
+	if err != nil {
+		return 400, "Ocurrio un error al intentar borrar el producto" + strconv.Itoa(id) + " > " + err.Error()
+	}
+
+	return 200, " Delete OK"
 }
