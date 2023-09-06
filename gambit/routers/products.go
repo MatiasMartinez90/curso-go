@@ -45,6 +45,8 @@ func UpdateProduct(body string, User string, id int) (int, string) {
 
 	var t models.Product
 
+	fmt.Println(t.ProdTitle)
+
 	err := json.Unmarshal([]byte(body), &t)
 	if err != nil {
 		return 400, "Error en los datos recibidos" + err.Error()
@@ -52,7 +54,7 @@ func UpdateProduct(body string, User string, id int) (int, string) {
 
 	if len(t.ProdTitle) == 0 {
 		fmt.Println(t.ProdTitle)
-		return 400, "Debe especificar el nombre del producto "
+		return 400, "Debe especificar el nombre del producto DALE "
 	}
 
 	isAdmin, msg := bd.UserIsAdmin(User)
