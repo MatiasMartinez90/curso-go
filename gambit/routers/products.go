@@ -45,10 +45,8 @@ func UpdateProduct(body string, User string, id int) (int, string) {
 
 	var t models.Product
 
-	perro := t.ProdTitle
-
 	fmt.Println("IMPRIMO t.ProdTitle")
-	fmt.Println(perro)
+	fmt.Println(t)
 
 	err := json.Unmarshal([]byte(body), &t)
 	if err != nil {
