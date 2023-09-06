@@ -47,7 +47,8 @@ func UpdateProduct(body string, User string, id int) (int, string) {
 
 	err := json.Unmarshal([]byte(body), &t)
 	fmt.Println("IMPRIMO ERRORCITO")
-	fmt.Println(err)
+	fmt.Println(json.Unmarshal([]byte(body), &t))
+
 	if err != nil {
 		return 400, "Error en los datos recibidos" + err.Error()
 	}
