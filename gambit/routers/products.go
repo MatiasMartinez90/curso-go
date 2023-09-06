@@ -44,7 +44,7 @@ func UpdateProduct(body string, User string, id int) (int, string) {
 	fmt.Println("Inicializando funcion  router.UpdateProduct")
 
 	var t models.Product
-
+	fmt.Println("IMPRIMO t.ProdTitle")
 	fmt.Println(t.ProdTitle)
 
 	err := json.Unmarshal([]byte(body), &t)
