@@ -54,9 +54,9 @@ func UpdateProduct(body string, User string, id int) (int, string) {
 		return 400, "Error en los datos recibidos" + err.Error()
 	}
 
-	if len(t.ProdTitle) == 0 {
-		return 400, "Debe especificar el nombre del producto "
-	}
+	//if len(t.ProdTitle) == 0 {
+	//	return 400, "Debe especificar el nombre del producto "
+	//}
 
 	isAdmin, msg := bd.UserIsAdmin(User)
 	if !isAdmin {
