@@ -108,8 +108,10 @@ func ProcesoCategory(body string, path string, method string, user string, id in
 	return 400, "Method Invalid ProcesoCategory"
 }
 
-func ProcesoStocks(body string, path string, method string, user string, idn int, request events.APIGatewayV2HTTPRequest) (int, string) {
-	return 400, "Method Invalid ProcesoStock"
+func ProcesoStocks(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
+	fmt.Println("Ingreando a la funcion ProcesoStocks")
+
+	return routers.UpdateStock(body, user, id)
 }
 
 func ProcesoAddress(body string, path string, method string, user string, idn int, request events.APIGatewayV2HTTPRequest) (int, string) {
