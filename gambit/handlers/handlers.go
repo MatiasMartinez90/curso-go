@@ -134,10 +134,23 @@ func ProcesoStocks(body string, path string, method string, user string, id int,
 	return routers.UpdateStock(body, user, id)
 }
 
-func ProcesoAddress(body string, path string, method string, user string, idn int, request events.APIGatewayV2HTTPRequest) (int, string) {
-	return 400, "Method Invalid ProcesoAddress"
+func ProcesoAddress(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
+	fmt.Println("Ingreando a la funcion ProcesoAddress")
+
+	switch method {
+	case "POST":
+		return routers.InsertAddress(body, user)
+	case "PUT":
+		return routers.UpdateAddress(body, user, id)
+	case "DELETE":
+		return routers.DeleteAddres(user, id)
+	case "GET":
+		return routers.SelectAddress(user)
+	}
+
+	return 400, "method invalid"
 }
 
-func ProcesoOrders(body string, path string, method string, user string, idn int, request events.APIGatewayV2HTTPRequest) (int, string) {
+func ProcesoOrders(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	return 400, "Method Invalid ProcesoOrder"
 }
