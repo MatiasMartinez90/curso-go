@@ -77,7 +77,7 @@ func ProcesoUsers(body string, path string, method string, user string, id strin
 	fmt.Println("Imprimo Path")
 	fmt.Println(path)
 
-	if path == "user/me" {
+	if path == "/user/me" {
 		switch method {
 		case "PUT":
 			return routers.UpdateUser(body, user)
@@ -85,7 +85,7 @@ func ProcesoUsers(body string, path string, method string, user string, id strin
 			return routers.SelectUser(body, user)
 		}
 	}
-	if path == "users" {
+	if path == "/users" {
 		switch method {
 		case "GET":
 			return routers.SelectUsers(body, user, request)
