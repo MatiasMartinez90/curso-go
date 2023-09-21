@@ -91,7 +91,7 @@ func ProcesoUsers(body string, path string, method string, user string, id strin
 
 	}
 
-	return 400, "method invalid"
+	return 400, "method invalid ProcesoUsers"
 }
 
 func ProcesoProducts(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
