@@ -74,6 +74,8 @@ func validoAuthorization(path string, method string, headers map[string]string) 
 
 func ProcesoUsers(body string, path string, method string, user string, id string, request events.APIGatewayV2HTTPRequest) (int, string) {
 	fmt.Println("Ingreando a la funcion ProcesoUsers")
+	fmt.Println("Imprimo Path")
+	fmt.Println(path)
 
 	if path == "user/me" {
 		switch method {
