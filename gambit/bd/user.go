@@ -65,11 +65,13 @@ func SelectUser(UserId string) (models.User, error) {
 	var rows *sql.Rows
 	rows, err = Db.Query(sentencia)
 	//Nos aseguramos que cierra la sentencia
-	defer rows.Close()
+
 	if err != nil {
 		fmt.Println(err.Error())
 		return User, err
 	}
+
+	defer rows.Close()
 
 	rows.Next()
 
@@ -78,6 +80,8 @@ func SelectUser(UserId string) (models.User, error) {
 	var dateUpg sql.NullString
 
 	err = rows.Scan(&User.UserUUID, &User.UserEmail, &firstName, &lastName, &User.UserStatus, &User.UserDateAdd, &dateUpg)
+
+	fmt.Println(err)
 
 	User.UserFirstName = firstName.String
 	User.UserLastName = lastName.String
@@ -145,6 +149,8 @@ func SelectUsers(Page int) (models.ListUsers, error) {
 		var dateUpg sql.NullString
 
 		err = rows.Scan(&u.UserUUID, &u.UserEmail, &firstName, &lastName, &u.UserStatus, &u.UserDateAdd, &dateUpg)
+
+		fmt.Println(err)
 
 		u.UserFirstName = firstName.String
 		u.UserLastName = lastName.String
